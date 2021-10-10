@@ -1,0 +1,92 @@
+### Get all details in this port
+GET http://localhost:3000/users
+
+### Blogger1 registration
+POST http://localhost:3000/register-user
+Content-Type: application/json
+
+{
+  "name":"Abhiram",
+  "password":"abhiram"
+}
+
+### Commentor1 registration
+POST http://localhost:3000/register-user
+Content-Type: application/json
+
+{
+  "name":"Jane",
+  "password":"jane"
+}
+
+### Commentor2 registration
+POST http://localhost:3000/register-user
+Content-Type: application/json
+
+{
+  "name":"Jake",
+  "password":"jake"
+}
+
+### Blogger1 login (eyJhbGciOiJIUzI1NiJ9.QWJoaXJhbQ.8bTAUqRnwR-nXj6jpFFzBzOCDy_HRNBdFqvJgrsEs5c)
+POST http://localhost:3000/login-user
+Content-Type: application/json
+
+{
+  "name":"Abhiram",
+  "password":"abhiram"
+}
+
+### Commenter1 login (eyJhbGciOiJIUzI1NiJ9.SmFuZQ.k8EUPJzzkCYDDFK5DGM895_ZVHHetsC9SZuT5yv1hEw)
+POST http://localhost:3000/login-user
+Content-Type: application/json
+
+{
+  "name":"Jane",
+  "password":"jane"
+}
+
+### Commenter2 login
+POST http://localhost:3000/login-user
+Content-Type: application/json
+
+{
+  "name":"Jake",
+  "password":"jake"
+}
+
+### Uploading a blog by blogger
+POST http://localhost:3000/auth/submit-blog
+Authorization: Blogger eyJhbGciOiJIUzI1NiJ9.QWJoaXJhbQ.8bTAUqRnwR-nXj6jpFFzBzOCDy_HRNBdFqvJgrsEs5c
+Content-Type: application/json
+
+{
+  "title":"Introduction to JS",
+  "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+}
+
+### Commentor1 commenting and liking the blog
+POST http://localhost:3000/auth/submit-comment
+Authorization: Commentor eyJhbGciOiJIUzI1NiJ9.SmFuZQ.k8EUPJzzkCYDDFK5DGM895_ZVHHetsC9SZuT5yv1hEw
+Content-Type: application/json
+
+{
+  "blog_owner_token":"eyJhbGciOiJIUzI1NiJ9.QWJoaXJhbQ.8bTAUqRnwR-nXj6jpFFzBzOCDy_HRNBdFqvJgrsEs5c",
+  "title":"Introduction to JS",
+  "like":1,
+  "dislike":0,
+  "comment":"Awesome article"
+}
+
+### Commentor2 commenting and liking the blog
+POST http://localhost:3000/auth/submit-comment
+Authorization: Commentor 
+Content-Type: application/json
+
+{
+  "blog_owner_token":"",
+  "title":"Introduction to JS",
+  "like":1,
+  "dislike":0,
+  "comment":"Awesome explaination"
+}
