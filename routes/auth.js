@@ -62,9 +62,9 @@ router.post("/submit-comment", authenticateToken, async (req, res) => {
     current_blogs=current_blogs.map((blog)=>{
       console.log(blog)
       if(blog!==null){
-        if(blog.title===req.body.title){
-          blog.likes+=req.body.like
-          blog.dislikes+=req.body.dislike
+        if(blog.title==req.body.title){
+          blog.likes=blog.likes+req.body.like
+          blog.dislikes=blog.dislikes+req.body.dislike
           blog.comments.push(
             {
               username:req.user,
@@ -73,6 +73,7 @@ router.post("/submit-comment", authenticateToken, async (req, res) => {
           )
         }
       }
+      return blog
       
     })
     console.log(current_blogs)
